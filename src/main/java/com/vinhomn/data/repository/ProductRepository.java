@@ -10,5 +10,6 @@ import com.vinhomn.data.domain.Product;
 @Transactional
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+	public Product findById(long id);
 	public List<Product> findByNameLike(String name);
 }
