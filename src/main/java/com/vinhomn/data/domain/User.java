@@ -1,5 +1,6 @@
 package com.vinhomn.data.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,25 +14,38 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@Size(min=5, max=30)
 	private String username;
 
+	@NotEmpty
 	private String password;
 
+	@NotEmpty
+	@Email
 	private String email;
 
 	private Boolean enabled;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
+	private Set<Authority> authorities;
 
 	public long getId() {
 		return id;
@@ -73,12 +87,12 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public Set<Role> getRoles() {
-		if (roles == null) roles = new HashSet<>();
-		return roles;
+	public Set<Authority> getAuthorities() {
+		if (authorities == null) authorities = new HashSet<>();
+		return authorities;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setAuthorities(Set<Authority> authorities) {
+		this.authorities = authorities;
 	}
 }

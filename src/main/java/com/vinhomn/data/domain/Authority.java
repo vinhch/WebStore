@@ -11,15 +11,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "authorities")
+public class Authority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private short id;
 
 	private String code;
 
-	@ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
 	private Set<User> users;
 
 	public long getId() {

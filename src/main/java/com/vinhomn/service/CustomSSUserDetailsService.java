@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.vinhomn.data.domain.Role;
+import com.vinhomn.data.domain.Authority;
 import com.vinhomn.data.domain.User;
 import com.vinhomn.data.repository.UserRepository;
 
@@ -26,10 +26,10 @@ public class CustomSSUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			User user = userRepository.findByUsername(username);
+			User user = userRepository.findOneByUsername(username);
 
 			if (user == null)
-				user = userRepository.findByEmail(username);
+				user = userRepository.findOneByEmail(username);
 			
 			if (user != null)
 				return new org.springframework.security.core.userdetails.User(user.getUsername(),
@@ -45,8 +45,8 @@ public class CustomSSUserDetailsService implements UserDetailsService {
 	private Set<GrantedAuthority> getAuthorities(User user) {
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		
-		for (Role role : user.getRoles()) {
-			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getCode());
+		for (Authority authority : user.getAuthorities()) {
+			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getCode());
 			authorities.add(grantedAuthority);
 		}
 		
