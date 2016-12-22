@@ -1,4 +1,4 @@
-<#import "/layout/layout.ftl" as layout>
+<#import "/layout/layout.ftlh" as layout>
 <@layout.admin "Home">
 <div class="row">
     <div class="box">

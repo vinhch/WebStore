@@ -1,11 +1,11 @@
 <#macro admin title="FreeMarker example" pageHeader="">
 <!DOCTYPE html>
 <html lang="en">
-<#include "/layout/admin/header.ftl">
+<#include "/layout/admin/header.ftlh">
 <body>
     <div id="wrapper">
         <!-- Navigation -->
-        <#include "/layout/admin/nav.ftl">
+        <#include "/layout/admin/nav.ftlh">
         <!-- /Navigation -->
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -19,7 +19,7 @@
             <!-- /Content -->
         </div>
     </div>
-    <#include "/layout/admin/footer_scripts.ftl">
+    <#include "/layout/admin/footer_scripts.ftlh">
 </body>
 </html>
 </#macro>

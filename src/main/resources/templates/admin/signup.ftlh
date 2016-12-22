@@ -1,8 +1,8 @@
-<#import "/spring.ftl" as spring/>
+<#import "/spring.ftlh" as spring/>
 <#assign title = "Sign Up">
 <!DOCTYPE html>
 <html lang="en">
-<#include "/layout/admin/header.ftl">
+<#include "/layout/admin/header.ftlh">
 <body>
     <div class="container">
         <div class="col-md-4 col-md-offset-4">
@@ -41,6 +41,6 @@
             </div>
         </div>
     </div>
-    <#include "/layout/admin/footer_scripts.ftl">
+    <#include "/layout/admin/footer_scripts.ftlh">
 </body>
 </html>

@@ -1,7 +1,7 @@
 <#assign title = "Sign In">
 <!DOCTYPE html>
 <html lang="en">
-<#include "/layout/admin/header.ftl">
+<#include "/layout/admin/header.ftlh">
 <body>
     <div class="container">
         <div class="row">
@@ -34,6 +34,6 @@
             </div>
         </div>
     </div>
-    <#include "/layout/admin/footer_scripts.ftl">
+    <#include "/layout/admin/footer_scripts.ftlh">
 </body>
 </html>
