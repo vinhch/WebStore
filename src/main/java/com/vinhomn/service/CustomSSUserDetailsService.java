@@ -20,37 +20,37 @@ import com.vinhomn.data.repository.UserRepository;
 @Service("customSSUserDetailsService")
 @Transactional
 public class CustomSSUserDetailsService implements UserDetailsService {
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		try {
-			User user = userRepository.findOneByUsername(username);
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        try {
+            User user = userRepository.findOneByUsername(username);
 
-			if (user == null)
-				user = userRepository.findOneByEmail(username);
-			
-			if (user != null)
-				return new org.springframework.security.core.userdetails.User(user.getUsername(),
-						user.getPassword(),
-						getAuthorities(user));
+            if (user == null)
+                user = userRepository.findOneByEmail(username);
+            
+            if (user != null)
+                return new org.springframework.security.core.userdetails.User(user.getUsername(),
+                        user.getPassword(),
+                        getAuthorities(user));
 
-			return null;
-		} catch (Exception e) {
-			throw new UsernameNotFoundException("User not found");
-		}
-	}
+            return null;
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("User not found");
+        }
+    }
 
-	private Set<GrantedAuthority> getAuthorities(User user) {
-		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-		
-		for (Authority authority : user.getAuthorities()) {
-			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getCode());
-			authorities.add(grantedAuthority);
-		}
-		
-		return authorities;
-	}
+    private Set<GrantedAuthority> getAuthorities(User user) {
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        
+        for (Authority authority : user.getAuthorities()) {
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getCode());
+            authorities.add(grantedAuthority);
+        }
+        
+        return authorities;
+    }
 
 }

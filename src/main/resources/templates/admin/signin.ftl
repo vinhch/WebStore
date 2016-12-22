@@ -3,7 +3,7 @@
 <html lang="en">
 <#include "/layout/admin/header.ftl">
 <body>
-	<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
@@ -34,6 +34,6 @@
             </div>
         </div>
     </div>
-	<#include "/layout/admin/footer_scripts.ftl">
+    <#include "/layout/admin/footer_scripts.ftl">
 </body>
 </html>

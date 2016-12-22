@@ -13,36 +13,36 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "authorities")
 public class Authority {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private short id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private short id;
 
-	private String code;
+    private String code;
 
-	@ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
-	private Set<User> users;
+    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    private Set<User> users;
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setId(short id) {
-		this.id = id;
-	}
+    public void setId(short id) {
+        this.id = id;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public Set<User> getUsers() {
-		return users;
-	}
+    public Set<User> getUsers() {
+        return users;
+    }
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

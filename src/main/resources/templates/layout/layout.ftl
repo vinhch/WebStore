@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" content="${_csrf.token}"/>
-	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta name="description" content="">
     <meta name="author" content="">
     
@@ -30,20 +30,20 @@
     <![endif]-->
 </head>
 <body>
-	<div class="brand">Business Casual</div>
+    <div class="brand">Business Casual</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
     
     <!-- Navigation -->
-	<#include "/layout/nav.ftl">
-	<!-- /Navigation -->
-	
-	<!-- Page Content -->
-	<div class="container">
-		<#nested/>
-	</div>
-	<!-- /Page Content -->
-	
-	<footer>
+    <#include "/layout/nav.ftl">
+    <!-- /Navigation -->
+    
+    <!-- Page Content -->
+    <div class="container">
+        <#nested/>
+    </div>
+    <!-- /Page Content -->
+    
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

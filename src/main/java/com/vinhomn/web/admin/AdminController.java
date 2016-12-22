@@ -14,40 +14,40 @@ import com.vinhomn.service.UserService;
 
 @Controller
 public class AdminController {
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String index() {
-		return "admin/index";
-	}
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String index() {
+        return "admin/index";
+    }
 
-	@RequestMapping(value = "/admin/signin", method = RequestMethod.GET)
-	public String signIn() {
-		return "admin/signin";
-	}
-	
-	@RequestMapping(value = "/admin/signup", method = RequestMethod.GET)
-	public String signUp(Model model, HttpServletRequest request) {
-		model.addAttribute("user", new User());
-		model.addAttribute("ipAddress", request.getRemoteAddr());
-		
-		return "admin/signup";
-	}
-	
-	@RequestMapping(value = "/admin/signup", method = RequestMethod.POST)
-	public String signUp(@Valid User user, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			return "admin/signup";
-		}
-		
-		try {
-			userService.createNewUserAccount(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "redirect:admin/signin";
-	}
+    @RequestMapping(value = "/admin/signin", method = RequestMethod.GET)
+    public String signIn() {
+        return "admin/signin";
+    }
+    
+    @RequestMapping(value = "/admin/signup", method = RequestMethod.GET)
+    public String signUp(Model model, HttpServletRequest request) {
+        model.addAttribute("user", new User());
+        model.addAttribute("ipAddress", request.getRemoteAddr());
+        
+        return "admin/signup";
+    }
+    
+    @RequestMapping(value = "/admin/signup", method = RequestMethod.POST)
+    public String signUp(@Valid User user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "admin/signup";
+        }
+        
+        try {
+            userService.createNewUserAccount(user);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return "redirect:admin/signin";
+    }
 }

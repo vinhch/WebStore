@@ -15,12 +15,12 @@ import com.vinhomn.data.domain.Product;
 @RequestMapping("/admin/products")
 public class ProductController {
 
-	@GetMapping
-	public Map<String, List<Product>> getList() {
+    @GetMapping
+    public Map<String, List<Product>> getList() {
 
-		List<Product> products = new ArrayList<Product>();
-		Map<String, List<Product>> modelMap = new HashMap<String, List<Product>>();
-		modelMap.put("model", products);
-		return modelMap;
-	}
+        List<Product> products = new ArrayList<Product>();
+        Map<String, List<Product>> modelMap = new HashMap<String, List<Product>>();
+        modelMap.put("model", products);
+        return modelMap;
+    }
 }

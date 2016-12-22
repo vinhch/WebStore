@@ -22,77 +22,77 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-	@Size(min=5, max=30)
-	private String username;
+    @Size(min=5, max=30)
+    private String username;
 
-	@NotEmpty
-	private String password;
+    @NotEmpty
+    private String password;
 
-	@NotEmpty
-	@Email
-	private String email;
+    @NotEmpty
+    @Email
+    private String email;
 
-	private Boolean enabled;
+    private Boolean enabled;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
-	private Set<Authority> authorities;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private Set<Authority> authorities;
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public Set<Authority> getAuthorities() {
-		if (authorities == null) authorities = new HashSet<>();
-		return authorities;
-	}
+    public Set<Authority> getAuthorities() {
+        if (authorities == null) authorities = new HashSet<>();
+        return authorities;
+    }
 
-	public void setAuthorities(Set<Authority> authorities) {
-		this.authorities = authorities;
-	}
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
 }

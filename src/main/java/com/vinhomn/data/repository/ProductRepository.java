@@ -9,6 +9,6 @@ import com.vinhomn.data.domain.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-	public Product findById(long id);
-	public List<Product> findByNameLike(String name);
+    public Product findById(long id);
+    public List<Product> findByNameLike(String name);
 }
