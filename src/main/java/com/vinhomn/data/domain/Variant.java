@@ -1,7 +1,8 @@
 package com.vinhomn.data.domain;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +13,9 @@ public class Variant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private Date createdOn;
+    private Timestamp createdOn;
 
-    private Date modifiedOn;
+    private Timestamp modifiedOn;
 
     private String title;
 
@@ -33,19 +34,19 @@ public class Variant {
         this.id = id;
     }
 
-    public Date getCreatedOn() {
+    public Timestamp getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
 
-    public Date getModifiedOn() {
+    public Timestamp getModifiedOn() {
         return modifiedOn;
     }
 
-    public void setModifiedOn(Date modifiedOn) {
+    public void setModifiedOn(Timestamp modifiedOn) {
         this.modifiedOn = modifiedOn;
     }
 

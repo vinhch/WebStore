@@ -1,5 +1,7 @@
 package com.vinhomn.web.admin;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -23,7 +25,8 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/signin", method = RequestMethod.GET)
-    public String signIn() {
+    public String signIn(Principal principal) {
+        if (principal != null) return "redirect:/";
         return "admin/signin";
     }
     
@@ -48,6 +51,6 @@ public class AdminController {
             e.printStackTrace();
         }
         
-        return "redirect:admin/signin";
+        return "redirect:/admin/signin";
     }
 }

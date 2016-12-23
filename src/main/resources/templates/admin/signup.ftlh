@@ -2,7 +2,7 @@
 <#assign title = "Sign Up">
 <!DOCTYPE html>
 <html lang="en">
-<#include "/layout/admin/header.ftlh">
+<#include "/layout/admin/header.ftl">
 <body>
     <div class="container">
         <div class="col-md-4 col-md-offset-4">

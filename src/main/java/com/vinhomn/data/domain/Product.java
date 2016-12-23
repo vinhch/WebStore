@@ -1,10 +1,11 @@
 package com.vinhomn.data.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -14,10 +15,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private Date createdOn;
+    private Timestamp createdOn;
 
-    private Date modifiedOn;
+    private Timestamp modifiedOn;
 
+    @Size(min=2, max=30)
     private String name;
 
     private String content;
@@ -34,11 +36,11 @@ public class Product {
         this.id = id;
     }
 
-    public Date getCreatedOn() {
+    public Timestamp getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(Date createdOn) {
+    public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -50,11 +52,11 @@ public class Product {
         this.name = name;
     }
 
-    public Date getModifiedOn() {
+    public Timestamp getModifiedOn() {
         return modifiedOn;
     }
 
-    public void setModifiedOn(Date modifiedOn) {
+    public void setModifiedOn(Timestamp modifiedOn) {
         this.modifiedOn = modifiedOn;
     }
 
