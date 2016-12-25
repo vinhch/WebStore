@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Nationalized;
+
 @Entity
 @Table(name = "variants")
 public class Variant {
@@ -17,6 +19,7 @@ public class Variant {
 
     private Timestamp modifiedOn;
 
+    @Nationalized
     private String title;
 
     private BigDecimal price;

@@ -16,12 +16,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                <#list products as product>
+                    Part repeated for each item
                     <tr>
-                        <td>1</td>
-                        <td>Chú chó biết hát</td>
+                        <td>${product.id}</td>
+                        <td>${product.name}</td>
                         <td>-</td>
                         <td>-</td>
                     </tr>
+                    <#else>
+                    <tr>
+                        <td colspan="4">Không có sản phẩm nào</td>
+                    </tr>
+                </#list>
                 </tbody>
             </table>
         </div>

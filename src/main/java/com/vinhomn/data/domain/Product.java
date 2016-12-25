@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Nationalized;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -19,12 +21,16 @@ public class Product {
 
     private Timestamp modifiedOn;
 
+    @Nationalized
     @Size(min=2, max=30)
     private String name;
 
+    @Column(columnDefinition="text")
+//    @Lob
+//    @Nationalized
     private String content;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "productId")
     private Set<Variant> variants;
 
@@ -69,13 +75,18 @@ public class Product {
     }
 
     public Set<Variant> getVariants() {
-        if (variants == null) {
-            variants = new HashSet<>();
-        }
         return variants;
     }
 
     public void setVariants(Set<Variant> variants) {
         this.variants = variants;
+    }
+    
+    public void addVariant(Variant variant) {
+        if (variants == null) {
+            variants = new HashSet<>();
+        }
+        
+        variants.add(variant);
     }
 }
