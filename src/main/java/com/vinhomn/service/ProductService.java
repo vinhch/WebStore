@@ -12,4 +12,5 @@ public interface ProductService {
     public List<Product> findAll();
     
     public Product saveFromModel(ProductModel model);
+    public Product editFromModel(long id, ProductModel model);
 }

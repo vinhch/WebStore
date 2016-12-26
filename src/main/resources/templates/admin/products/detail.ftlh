@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <#import "/layout/admin/layout.ftlh" as layout>
-<@layout.admin "Sản phẩm" "Thêm mới sản phẩm">
+<@layout.admin "Sản phẩm" productModel.name>
 <form role="form" method="post">
     <@spring.bind "productModel.name" />
     <div class="form-group <#if spring.status.errorMessages?has_content>has-error</#if>">

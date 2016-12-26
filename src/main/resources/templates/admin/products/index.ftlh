@@ -6,7 +6,7 @@
             <a type="button" class="btn btn-primary" href="/admin/products/create">Thêm mới</a>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -17,21 +17,27 @@
                 </thead>
                 <tbody>
                 <#list products as product>
-                    Part repeated for each item
-                    <tr>
-                        <td>${product.id}</td>
-                        <td>${product.name}</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                    <#else>
-                    <tr>
-                        <td colspan="4">Không có sản phẩm nào</td>
-                    </tr>
+                <tr class="clickable-row" data-href="/admin/products/${product.id}">
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <#else>
+                <tr>
+                    <td colspan="4">Không có sản phẩm nào</td>
+                </tr>
                 </#list>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
 </@layout.admin>

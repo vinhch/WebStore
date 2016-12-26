@@ -6,6 +6,9 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.vinhomn.data.domain.Product;
+import com.vinhomn.data.domain.Variant;
+
 public class ProductModel {
     @Size(min=2, max=30)
     private String name;
@@ -48,5 +51,15 @@ public class ProductModel {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+    
+    public ProductModel() { }
+    public ProductModel(Product product){
+        this.setName(product.getName());
+        this.setContent(product.getContent());
+        
+        Variant variant = product.getVariants().stream().findFirst().get();
+        this.setPrice(variant.getPrice());
+        this.setQuantity(variant.getQuantity());
     }
 }

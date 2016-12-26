@@ -53,7 +53,25 @@ public class ProductServiceImpl implements ProductService {
         
         return productRepository.save(entity);
     }
-    
+
+    @Override
+    public Product editFromModel(long id, ProductModel model) {
+        Product product = productRepository.findOne(id);
+        
+        if (product == null) return null;
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        
+        product.setName(model.getName());
+        product.setContent(model.getContent());
+        product.setModifiedOn(now);
+        
+        Variant variant = product.getVariants().stream().findFirst().get();
+        variant.setPrice(model.getPrice());
+        variant.setModifiedOn(now);
+        
+        return product;
+    }
+
     private static Variant createDefaultProductVariant(BigDecimal price) {
         Variant variant = new Variant();
         variant.setTitle("Default title");

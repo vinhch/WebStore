@@ -1,6 +1,3 @@
-<!-- jQuery -->
-<script src="/js/jquery/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="/contents/bootstrap/js/bootstrap.min.js"></script>
 
