@@ -88,11 +88,16 @@ public class User implements Serializable {
     }
 
     public Set<Authority> getAuthorities() {
-        if (authorities == null) authorities = new HashSet<>();
         return authorities;
     }
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+    
+    public void addAuthority(Authority authority) {
+        if (authorities == null) 
+            authorities = new HashSet<>();
+        authorities.add(authority);
     }
 }

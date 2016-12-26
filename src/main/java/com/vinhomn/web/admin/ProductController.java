@@ -27,7 +27,7 @@ public class ProductController {
     }
     
     @GetMapping("/{id}")
-    public String getById(@PathVariable(value="id") long id, Model model) {
+    public String edit(@PathVariable(value="id") long id, Model model) {
         model.addAttribute("productModel", new ProductModel(productService.findOne(id)));
         return "/admin/products/detail";
     }
@@ -35,10 +35,8 @@ public class ProductController {
     @PostMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, @Valid ProductModel productModel,
             BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
             return "admin/products/detail";
-        }
-        
         productService.editFromModel(id, productModel);
         return "/admin/products/detail";
     }
@@ -47,19 +45,15 @@ public class ProductController {
     public Model create(Model model) {
         ProductModel productModel = new ProductModel();
         productModel.setName("test");
-        
         model.addAttribute("productModel", productModel);
         return model;
     }
     
     @PostMapping("/create")
     public String create(@Valid ProductModel productModel, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
             return "admin/products/create";
-        }
-        
         productService.saveFromModel(productModel);
-        
         return "redirect:/admin/products";
     }
 }

@@ -19,7 +19,7 @@
             <!-- /Content -->
         </div>
     </div>
-    <#include "/layout/admin/footer_scripts.ftlh">
+    <#include "/layout/admin/footer.ftlh">
 </body>
 </html>
 </#macro>
