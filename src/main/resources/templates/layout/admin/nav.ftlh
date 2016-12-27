@@ -241,6 +241,9 @@
                     <a href="/admin/products"><i class="fa fa-product-hunt fa-fw"></i> Sản phẩm</a>
                 </li>
                 <li>
+                    <a href="/admin/articles"><i class="fa fa-file-text-o fa-fw"></i> Bài viết</a>
+                </li>
+                <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>

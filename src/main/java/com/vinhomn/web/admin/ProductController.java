@@ -29,22 +29,21 @@ public class ProductController {
     @GetMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, Model model) {
         model.addAttribute("productModel", new ProductModel(productService.findOne(id)));
-        return "/admin/products/detail";
+        return "/admin/products/edit";
     }
     
     @PostMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, @Valid ProductModel productModel,
             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors())
-            return "admin/products/detail";
+            return "admin/products/edit";
         productService.editFromModel(id, productModel);
-        return "/admin/products/detail";
+        return "/admin/products/edit";
     }
     
     @GetMapping("/create")
     public Model create(Model model) {
         ProductModel productModel = new ProductModel();
-        productModel.setName("test");
         model.addAttribute("productModel", productModel);
         return model;
     }

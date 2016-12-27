@@ -57,10 +57,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product editFromModel(long id, ProductModel model) {
         Product product = productRepository.findOne(id);
-        
         if (product == null) return null;
-        Timestamp now = new Timestamp(System.currentTimeMillis());
         
+        Timestamp now = new Timestamp(System.currentTimeMillis());
         product.setName(model.getName());
         product.setContent(model.getContent());
         product.setModifiedOn(now);
