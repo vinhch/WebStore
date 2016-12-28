@@ -16,14 +16,14 @@ import com.vinhomn.web.model.ProductModel;
 
 @Controller
 @RequestMapping("/admin/products")
-public class ProductController {
+public class ProductAdminController {
     @Autowired
     private ProductService productService;
     
     @GetMapping
     public String getList(Model model) {
         model.addAttribute("products", productService.findAll());
-        return "/admin/products/index";
+        return "/admin/products/list";
     }
     
     @GetMapping("/{id}")
@@ -35,8 +35,9 @@ public class ProductController {
     @PostMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, @Valid ProductModel productModel,
             BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "admin/products/edit";
+        }
         productService.editFromModel(id, productModel);
         return "/admin/products/edit";
     }
@@ -50,8 +51,9 @@ public class ProductController {
     
     @PostMapping("/create")
     public String create(@Valid ProductModel productModel, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "admin/products/create";
+        }
         productService.saveFromModel(productModel);
         return "redirect:/admin/products";
     }

@@ -32,8 +32,9 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/signin", method = RequestMethod.GET)
     public String signIn(Principal principal) {
-        if (principal != null)
+        if (principal != null) {
             return "redirect:/";
+        }
         return "admin/signin";
     }
     
@@ -46,8 +47,9 @@ public class AdminController {
     
     @RequestMapping(value = "/admin/signup", method = RequestMethod.POST)
     public String signUp(@Valid User user, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "admin/signup";
+        }
 
         String adminAuthorityCode = "ADMIN";
         try {

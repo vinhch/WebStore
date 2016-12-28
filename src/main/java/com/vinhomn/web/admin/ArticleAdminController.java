@@ -28,15 +28,16 @@ public class ArticleAdminController {
     
     @GetMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, Model model) {
-        model.addAttribute("articles", new ArticleModel(articleService.findOne(id)));
+        model.addAttribute("articleModel", new ArticleModel(articleService.findOne(id)));
         return "admin/articles/edit";
     }
     
     @PostMapping("/{id}")
     public String edit(@PathVariable(value="id") long id, @Valid ArticleModel articleModel,
             BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "admin/products/edit";
+        }
         articleService.editFromModel(id, articleModel);
         return "/admin/products/edit";
     }
@@ -51,8 +52,9 @@ public class ArticleAdminController {
     @PostMapping("/create")
     public String create(@Valid ArticleModel articleModel, BindingResult bindingResult,
             Model model) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "admin/articles/create";
+        }
         articleService.saveFromModel(articleModel);
         return "redirect:/admin/articles";
     }

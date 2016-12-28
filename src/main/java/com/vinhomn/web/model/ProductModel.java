@@ -21,6 +21,18 @@ public class ProductModel {
 
     private Integer quantity;
 
+    public ProductModel() {
+    }
+    
+    public ProductModel(Product product){
+        this.setName(product.getName());
+        this.setContent(product.getContent());
+        
+        Variant variant = product.getVariants().stream().findFirst().get();
+        this.setPrice(variant.getPrice());
+        this.setQuantity(variant.getQuantity());
+    }
+    
     public String getName() {
         return name;
     }
@@ -51,15 +63,5 @@ public class ProductModel {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-    
-    public ProductModel() { }
-    public ProductModel(Product product){
-        this.setName(product.getName());
-        this.setContent(product.getContent());
-        
-        Variant variant = product.getVariants().stream().findFirst().get();
-        this.setPrice(variant.getPrice());
-        this.setQuantity(variant.getQuantity());
     }
 }

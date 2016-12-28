@@ -10,7 +10,9 @@ public class ArticleModel {
     
     private String content;
 
-    public ArticleModel() { }
+    public ArticleModel() {
+    }
+    
     public ArticleModel(Article article) {
         this.setTitle(article.getTitle());
         this.setContent(article.getContent());

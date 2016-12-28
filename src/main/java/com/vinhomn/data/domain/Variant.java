@@ -10,7 +10,6 @@ import org.hibernate.annotations.Nationalized;
 @Entity
 @Table(name = "variants")
 public class Variant {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -80,5 +79,4 @@ public class Variant {
     public long getProductId() {
         return productId;
     }
-
 }

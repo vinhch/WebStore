@@ -14,10 +14,8 @@ import com.vinhomn.web.model.TestModel;
 @Controller
 @RequestMapping("/test")
 public class TestController {
-
     @GetMapping
     public Map<String, TestModel> get() {
-        
         TestModel model = new TestModel();
         model.setA("aaa");
         model.setB("bbb");
@@ -29,7 +27,6 @@ public class TestController {
     
     @PostMapping
     public TestModel post(@ModelAttribute("model") TestModel model) {
-        
         return model;
     }
 }

@@ -96,8 +96,9 @@ public class User implements Serializable {
     }
     
     public void addAuthority(Authority authority) {
-        if (authorities == null) 
+        if (authorities == null) {
             authorities = new HashSet<>();
+        }
         authorities.add(authority);
     }
 }

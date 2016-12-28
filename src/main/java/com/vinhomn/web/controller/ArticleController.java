@@ -23,7 +23,7 @@ public class ArticleController {
     
     @GetMapping("/{id}")
     public String detail(@PathVariable(value="id") long id, Model model) {
-        model.addAttribute("articles", articleService.findOne(id));
+        model.addAttribute("article", articleService.findOne(id));
         return "/articles/detail";
     }
 }
